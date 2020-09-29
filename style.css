@@ -1,0 +1,26 @@
+.container {
+    background-color: aqua;
+}
+button {
+    float: left;
+    margin-top: 2px;
+
+}
+.start-button {
+    margin-left: 10px;
+}
+img {
+    margin-top: 10px;
+}
+#start-image {
+    width: 100%;
+    margin-top: 10px;
+
+}
+
+body {
+    background-color: aquamarine;
+}
+.card {
+    margin-top: 10px;
+}

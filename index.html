@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cage Quiz!</title>
+    <link rel="icon" 
+    type="image/jpg" 
+    href="./Assets/Nicolas-Cage.jpg"
+  >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-1"></div>
+        <div class="card col-lg-6 col-md-6 col-sm-10" style="width: 18rem;">
+            
+            <h3>Word</h3>
+            <div class="card-body">
+                <div class = "row">
+                <button type="button" id="button1" class="quiz-buttons btn btn-light">1</button>
+                </div>
+                <div class = "row">
+                <button type="button" id="button2" class="quiz-buttons btn btn-light">2</button>
+                </div>
+                <div class = "row">
+                <button type="button" id="button3" class="quiz-buttons btn btn-light">3</button>
+                </div>
+                <div class = "row">
+                <button type="button" id="button4" class="quiz-buttons btn btn-light">4</button>
+                </div>
+            </div>
+        <div class="col-lg-3 col-md-3 col-sm-1"></div>    
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var Question = document.querySelector("h3")
+        var button1 = document.querySelector("#button1")
+        var button2 = document.querySelector("#button2")
+        var button3 = document.querySelector("#button3")
+        var button4 = document.querySelector("#button4")
+        var quizButtons = [button1, button2, button3, button4]
+
+
+        var questionList = ["What is Nicolas Cage's real name?", 
+        "From 2007 to 2009 Nic Cage owned Schloss Neidstein.  In what German state is this castle located?", 
+        "How many castles has Nic Cage owned in his lifetime?", 
+        "For what movie did Nic Cage win a 'Best Actor' academy award?"];
+        var answerList = [["Nicholas Cage", "John Farnsworth Booth", "Nicolas Kim Coppola", "Benjamin Franklin Gates"],
+        ["Saxony", "Bavaria", "North-Rhine Westphalia", "Nic Cage owned a Castle? What? That can't be true"],
+        ["1, that one in Germany I just learned about has got to be the only one.", "2", "10","0, this can't be right. Why would Nic Cage own any castles"],
+        ["Adaption", "Leaving Las Vegas", "Moonstruck", "Nic Cage has never won a Best Actor Oscar, don't be silly"]]
+       
+
+        $(document).ready(function(){
+
+            $(Question).hide();
+            $(quizButtons).hide();
+
+            var startTitle = $("<h1>")
+            startTitle.addClass("title")
+            startTitle.text("Cage Quiz")
+            $(".card-body").append(startTitle);
+
+            var startImage = $("<img>")
+            startImage.attr("src", "./Assets/cage-headshot.jpg");
+            $(".card-body").append(startImage);
+
+            var startText = $("<p>")
+            startText.addClass("start-text")
+            startText.text("Think you know all there is to know about Nic Cage? This quiz will be 'Gone in 60 Seconds'. Click Start to test you knowledge.")
+            $(".card-body").append(startText);
+
+
+            var startButton = $("<div>")
+            startButton.addClass("btn btn-success start-button");
+            startButton.text("Start!");
+            $(".card-body").append(startButton);
+                
+                $(".start-button").click(function(){
+                    $(this).hide();
+                    $(startText).hide();
+                    $(startTitle).hide();
+                    $(startImage).hide();
+                    $(Question).show();
+                    $(quizButtons).show();
+                    var x = 0;
+                    console.log(questionList[x])
+                    Question.innerText = (questionList[x]);
+                    button1.innerHTML = answerList[x][0];
+                    button2.innerHTML = answerList[x][1];
+                    button3.innerHTML = answerList[x][2];
+                    button4.innerHTML = answerList[x][3];
+                    
+                    $(quizButtons).click(function() {
+                        if (x == questionList.length -1 ) {
+                          button1.style.color ="white"
+                        } else {
+                            
+                        x++;
+                        Question.innerText = (questionList[x]);
+                        button1.innerHTML = answerList[x][0];
+                        button2.innerHTML = answerList[x][1];
+                        button3.innerHTML = answerList[x][2];
+                        button4.innerHTML = answerList[x][3];
+                        }
+                    })
+
+
+                });
+
+           
+   
+            }) 
+    </script>
+</body>
+</html>
