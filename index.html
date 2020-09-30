@@ -6,8 +6,7 @@
     <title>Cage Quiz!</title>
     <link rel="icon" 
     type="image/jpg" 
-    href="./Assets/Nicolas-Cage.jpg"
-  >
+    href="./Assets/Nicolas-Cage.jpg">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -22,6 +21,7 @@
         <div class="card col-lg-6 col-md-6 col-sm-10" style="width: 18rem;">
             
             <h3>Word</h3>
+            <!-- <div class="seconds-display">2</div> -->
             <div class="card-body">
                 <div class = "row">
                 <button type="button" id="button1" class="quiz-buttons btn btn-light">1</button>
@@ -43,6 +43,7 @@
     <script type="text/javascript">
 
         var Question = document.querySelector("h3")
+        // var secondsDisplay = document.querySelector(".seconds-display")
         var button1 = document.querySelector("#button1")
         var button2 = document.querySelector("#button2")
         var button3 = document.querySelector("#button3")
@@ -84,7 +85,7 @@
             startButton.addClass("btn btn-success start-button");
             startButton.text("Start!");
             $(".card-body").append(startButton);
-                
+                  var t = 1;
                 $(".start-button").click(function(){
                     $(this).hide();
                     $(startText).hide();
@@ -92,27 +93,51 @@
                     $(startImage).hide();
                     $(Question).show();
                     $(quizButtons).show();
-                    var x = 0;
-                    console.log(questionList[x])
-                    Question.innerText = (questionList[x]);
-                    button1.innerHTML = answerList[x][0];
-                    button2.innerHTML = answerList[x][1];
-                    button3.innerHTML = answerList[x][2];
-                    button4.innerHTML = answerList[x][3];
-                    
+                    var i = 0;
+                    Question.innerText = (questionList[i]);
+                    button1.innerHTML = answerList[i][0];
+                    button2.innerHTML = answerList[i][1];
+                    button3.innerHTML = answerList[i][2];
+                    button4.innerHTML = answerList[i][3];
+                    var secondsDisplay = $("<div>")
+                     secondsDisplay.text("60")
+                     secondsDisplay.addClass("seconds-display row")
+                  
+                     $(".card-body").prepend(secondsDisplay);
+
+                    var i = 60;
+                    setInterval(function() {
+                        $(".seconds-display").html(i);
+                        i--;
+                     }, 1000);
+                     
+                    if (i >= 0){
                     $(quizButtons).click(function() {
-                        if (x == questionList.length -1 ) {
-                          button1.style.color ="white"
+                        if (i == questionList.length -1 ) {          
+                            var scoresButton = $("<a>")
+                            scoresButton.addClass("btn btn-outline-info scores-button");
+                            scoresButton.attr("href", "./scores.html");
+                            scoresButton.text("See High Scores");
+                            $(".card-body").append(scoresButton);
                         } else {
                             
-                        x++;
-                        Question.innerText = (questionList[x]);
-                        button1.innerHTML = answerList[x][0];
-                        button2.innerHTML = answerList[x][1];
-                        button3.innerHTML = answerList[x][2];
-                        button4.innerHTML = answerList[x][3];
+                        i++;
+                        Question.innerText = questionList[i];
+                        button1.innerHTML = answerList[i][0];
+                        button2.innerHTML = answerList[i][1];
+                        button3.innerHTML = answerList[i][2];
+                        button4.innerHTML = answerList[i][3];
                         }
-                    })
+                    })} else {
+
+                        var scoresButton = $("<a>")
+                            scoresButton.addClass("btn btn-outline-info scores-button");
+                            scoresButton.attr("href", "./scores.html");
+                            scoresButton.text("See High Scores");
+                            $(".card-body").append(scoresButton);
+
+                    }
+
 
 
                 });

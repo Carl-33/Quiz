@@ -6,6 +6,9 @@ button {
     margin-top: 2px;
 
 }
+.seconds-display {
+    float: right;
+}
 .start-button {
     margin-left: 10px;
 }
