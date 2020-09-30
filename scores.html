@@ -21,16 +21,57 @@
             
             <h3>High Scores</h3>
             <div class="card-body">
-            
+                <form>
+                    <div class="form-group">
+                      
+                        <input type="initials" class="form-control" id="Initials" placeholder="Enter your Initials">
+                   
+                    </div>
+                </form>
             </div>
         <div class="col-lg-3 col-md-3 col-sm-1"></div>    
       </div>
     </div>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
+        var initials = document.querySelector("#Initials")
+        var highScores = []
+        var scores = localStorage.getItem("Final Time")
+        console.log(scores)
 
-    
+
+        $(document).ready(function(){
+
+                var tomato = $("<h4>")
+                    tomato.text("Your time was " + scores + " seconds")
+                    $(".card-body").append(tomato)
+                    console.log(tomato)
+  
 
 
+
+            // initials.addEventListener("submit", function(event) {
+            // event.preventDefault();
+            // localStorage.inits = 
+
+            // });
+
+            
+
+            // var scoreList = $("<ul>")
+            //     scoreList.addClass("score-list")
+            //     $(".card-body").append(scoreList);
+
+            // var listItem = $("<li>")
+            //     listItem.addClass("score-item")
+            //     $(".score-list").append(listItem);
+
+            // var scores = $("<div>")
+            //     scores.innerHTML = localStorage.getItem("Final Time")
+            //     $(".card-body").append(scores)
+        })
+
+    </script>       
 </body>
 </html>
