@@ -105,30 +105,34 @@
                   
                      $(".card-body").prepend(secondsDisplay);
 
-                    var i = 60;
+                    var t = 60;
                     setInterval(function() {
-                        $(".seconds-display").html(i);
-                        i--;
+                        $(".seconds-display").html(t);
+                        t--;
                      }, 1000);
                      
-                    if (i >= 0){
-                    $(quizButtons).click(function() {
-                        if (i == questionList.length -1 ) {          
-                            var scoresButton = $("<a>")
-                            scoresButton.addClass("btn btn-outline-info scores-button");
-                            scoresButton.attr("href", "./scores.html");
-                            scoresButton.text("See High Scores");
-                            $(".card-body").append(scoresButton);
-                        } else {
-                            
-                        i++;
-                        Question.innerText = questionList[i];
-                        button1.innerHTML = answerList[i][0];
-                        button2.innerHTML = answerList[i][1];
-                        button3.innerHTML = answerList[i][2];
-                        button4.innerHTML = answerList[i][3];
-                        }
-                    })} else {
+                    if (t >= 0){
+                        $(quizButtons).click(function() {
+                            if (i == questionList.length -1 ) {          
+                                var scoresButton = $("<a>")
+                                scoresButton.addClass("btn btn-outline-info scores-button");
+                                scoresButton.attr("href", "./scores.html");
+                                scoresButton.text("See High Scores");
+                                $(".card-body").append(scoresButton);
+                                $(secondsDisplay).hide();
+                                localStorage.setItem("Final Time", t);
+                                    console.log(t);
+                            } else {
+                                
+                            i++;
+                            Question.innerText = questionList[i];
+                            button1.innerHTML = answerList[i][0];
+                            button2.innerHTML = answerList[i][1];
+                            button3.innerHTML = answerList[i][2];
+                            button4.innerHTML = answerList[i][3];
+                            };
+                        })
+                    } else  {
 
                         var scoresButton = $("<a>")
                             scoresButton.addClass("btn btn-outline-info scores-button");
